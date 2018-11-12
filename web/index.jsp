@@ -6,7 +6,7 @@
   </head>
   <body>
   <form name="hid">
-    <input id="methodType" type="hidden" name="flag" value="${flag}">
+      <input type="hidden" name="param" value="post">
   </form>
   <form action="dog" name="gettingForm" method="get">
       <input type="text" name="id" value="">
@@ -16,7 +16,13 @@
     <input type="text" name="id" value="">
     <input type="text" name="name" value="">
     <input type="text" name="type" value="">
-    <input type="button" value="post" onclick="post('post'<%=%>)">
+    <input type="submit" value="post">
+  </form>
+  <form action="dog" name="puttingForm" method="">
+    <input type="text" name="id" value="">
+    <input type="text" name="name" value="">
+    <input type="text" name="type" value="">
+    <input type="submit" value="post">
   </form>
   ${dog}
   </body>

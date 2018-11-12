@@ -28,12 +28,11 @@ public class DogController extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         String type = req.getParameter("type");
-        String flag = req.getParameter("flag");
-        System.out.println(flag);
-        if (flag.equals("post")) {
+        System.out.println(req.getMethod());
+        if (req.getMethod().equals("POST")) {
             DogStorage.getInstance().update(id, name, type);
             req.setAttribute("dog", "the dog was changed");
-        }
+        } else doPut(req, resp);
         forward("/index.jsp", req, resp);
     }
 

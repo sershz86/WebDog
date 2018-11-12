@@ -1,4 +1,8 @@
 function post(flag) {
-    document.getElementById("methodType").value = flag;
+    document.hid.param.value = flag;
     document.postingForm.submit();
+}
+
+function put(flag) {
+
 }
