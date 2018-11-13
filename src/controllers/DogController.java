@@ -16,7 +16,6 @@ public class DogController extends HttpServlet {
         System.out.println("doGet");
         int id = Integer.parseInt(req.getParameter("id"));
         Dog dog;
-
         if ((dog = DogStorage.getInstance().getDogById(id)) != null)
             req.setAttribute("dog", dog);
         forward("/index.jsp", req, resp);
@@ -28,7 +27,8 @@ public class DogController extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         String type = req.getParameter("type");
-        System.out.println(req.getMethod());
+        String flag = req.getParameter("paramHolder");
+        System.out.println(flag);
         if (req.getMethod().equals("POST")) {
             DogStorage.getInstance().update(id, name, type);
             req.setAttribute("dog", "the dog was changed");
