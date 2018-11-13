@@ -41,7 +41,14 @@ public class DogStorage {
     }
 
     public void update(int id, String name, String type) {
+        /*Dog dog = new Dog(id, name, type);
+        dogs.set(dogs.indexOf(getDogById(id)), dog);*/
+
         dogs.forEach(dog -> updateDog(dog, id, name, type));
+    }
+
+    public void delete(int id) {
+        dogs.remove(getDogById(id));
     }
 
     private void updateDog(Dog dog, int id, String name, String type) {

@@ -28,5 +28,6 @@
   </form>
 
   ${dog}
+  ${dogList}
   </body>
 </html>

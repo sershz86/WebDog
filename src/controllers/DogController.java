@@ -15,9 +15,14 @@ public class DogController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("doGet");
         int id = Integer.parseInt(req.getParameter("id"));
-        Dog dog;
-        if ((dog = DogStorage.getInstance().getDogById(id)) != null)
-            req.setAttribute("dog", dog);
+        if (id == -1) {
+            req.setAttribute("dogList", DogStorage.getInstance().getDogs());
+        } else {
+            Dog dog;
+            if ((dog = DogStorage.getInstance().getDogById(id)) != null)
+                req.setAttribute("dog", dog);
+        }
+
         forward("/index.jsp", req, resp);
     }
 
@@ -27,22 +32,25 @@ public class DogController extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         String type = req.getParameter("type");
-        String flag = req.getParameter("paramHolder");
-        System.out.println(flag);
         if (req.getMethod().equals("POST")) {
             DogStorage.getInstance().update(id, name, type);
             req.setAttribute("dog", "the dog was changed");
         } else doPut(req, resp);
-        forward("/index.jsp", req, resp);
+        resp.sendRedirect("/index.jsp");
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         String type = req.getParameter("type");
         DogStorage.getInstance().add(name, type);
-        forward("/index.jsp", req, resp);
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("doDelete");
+        int id = Integer.parseInt(req.getParameter("id"));
+        DogStorage.getInstance().delete(id);
     }
 
     private void forward(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
