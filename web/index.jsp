@@ -26,6 +26,7 @@
     <input type="text" name="type" value="">
     <input type="button" value="post" onclick="put('put')">
   </form>
+
   ${dog}
   </body>
 </html>
