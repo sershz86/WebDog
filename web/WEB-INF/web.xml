@@ -4,6 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
+        <servlet-name>dogList</servlet-name>
+        <servlet-class>controllers.DogListController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dogList</servlet-name>
+        <url-pattern>/dogAll</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>dogController</servlet-name>
         <servlet-class>controllers.DogController</servlet-class>
     </servlet>

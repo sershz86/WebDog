@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class DogController extends HttpServlet {
+public class DogController extends AbstractController{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,7 +22,6 @@ public class DogController extends HttpServlet {
             if ((dog = DogStorage.getInstance().getDogById(id)) != null)
                 req.setAttribute("dog", dog);
         }
-
         forward("/index.jsp", req, resp);
     }
 
@@ -51,10 +50,6 @@ public class DogController extends HttpServlet {
         System.out.println("doDelete");
         int id = Integer.parseInt(req.getParameter("id"));
         DogStorage.getInstance().delete(id);
-    }
-
-    private void forward(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 }
 

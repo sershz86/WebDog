@@ -1,3 +1,4 @@
+<%@ page import="domain.Dog" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -6,7 +7,7 @@
   </head>
   <body>
 
-      <input type="hidden" name="param" value="">
+      <%--<input type="hidden" name="param" value="">
 
   <form action="dog" name="gettingForm" method="get">
       <input type="text" name="id" value="">
@@ -25,9 +26,10 @@
     <input type="text" name="name" value="">
     <input type="text" name="type" value="">
     <input type="button" value="post" onclick="put('put')">
-  </form>
+  </form>--%>
 
   ${dog}
   ${dogList}
+
   </body>
 </html>
